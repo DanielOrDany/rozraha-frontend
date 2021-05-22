@@ -4,7 +4,7 @@ import React from 'react';
 export default ({post}) => {
     return (
         <div>
-            <h5>Title here {post}</h5>
+            <h5>{post.title}</h5>
         </div>
     )
 }
