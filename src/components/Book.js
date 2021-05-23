@@ -1,10 +1,19 @@
-import React from 'react';
+import React from 'react'
+import './Book.module.css'
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default ({book}) => {
+const Book = ({book}) => {
     return (
-        <div>
-            <h5>{book.name}</h5>
-        </div>
-    )
+        <tr>
+            <td>{book.id}</td>
+            <td>{book.name}</td>
+            <td>{book.creator}</td>
+            <td>{book.genre}</td>
+            <td>{book.created_at}</td>
+            <td>{book.deleted_at}</td>
+            <td>{book.createdAt}</td>
+            <td>{book.updatedAt}</td>
+        </tr>
+    );
 }
+
+export default Book
