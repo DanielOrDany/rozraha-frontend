@@ -1,5 +1,5 @@
-export const CREATE_POST = 'POST/CREATE_POST'
-export const FETCH_POSTS = 'POST/FETCH_POSTS'
-export const SHOW_LOADER = 'APP/SHOW_LOADER'
-export const HIDE_LOADER = 'APP/HIDE_LOADER'//POST - NOT HttP
-export const REQUEST_POSTS = 'POST/REQUEST_POSTS'
+export const CREATE_POST = 'CREATE_POST'
+export const FETCH_BOOKS = 'FETCH_BOOKS'
+export const REQUEST_BOOKS = 'REQUEST_BOOKS'
+export const SHOW_LOADER = 'SHOW_LOADER'
+export const HIDE_LOADER = 'HIDE_LOADER'

@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import Post from './Post';
+import Post from './Book';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 const Posts = ({syncPosts}) => {
@@ -11,9 +11,8 @@ const Posts = ({syncPosts}) => {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state)
     return {
-        syncPosts: state.posts.posts
+        syncPosts: state.books.posts
     }
 }
 

@@ -1,10 +1,10 @@
 import React from 'react';
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default ({post}) => {
+export default ({book}) => {
     return (
         <div>
-            <h5>{post.title}</h5>
+            <h5>{book.name}</h5>
         </div>
     )
 }

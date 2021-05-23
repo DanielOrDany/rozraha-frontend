@@ -1,4 +1,4 @@
-import {CREATE_POST,REQUEST_POSTS,SHOW_LOADER,HIDE_LOADER} from './types'
+import {CREATE_POST,REQUEST_BOOKS,SHOW_LOADER,HIDE_LOADER} from './types'
 
 export function createPost(post) {
     return {
@@ -18,15 +18,8 @@ export function hideLoader() {
     }
 }
 
-export function fetchPosts() {
+export function fetchBooks() {
     return {
-        type: REQUEST_POSTS
+        type: REQUEST_BOOKS
     }
-    // return async  dispatch => {
-    //     dispatch(showLoader())
-    //     const response = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=5')
-    //     const json = await response.json()
-    //     dispatch({type: FETCH_POSTS, payload: json})
-    //     dispatch(hideLoader())
-    // }
 }

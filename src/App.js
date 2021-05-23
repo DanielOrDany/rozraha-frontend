@@ -1,5 +1,5 @@
 import React from "react";
-import FetchedPosts from "./components/FetchedPosts";
+import FetchedBooks from "./components/FetchedBooks";
 import PostForm from "./components/PostForm";
 import Posts from "./components/Posts";
 
@@ -8,10 +8,10 @@ function App() {
         <div>
             <PostForm />
             <Posts posts={[1,2,3]}/>
-            <FetchedPosts posts={[]}/>
+            <FetchedBooks />
         </div>
     );
 }
 
 export default App;
-//datepicker timestamp 54:59
+//datepicker timestamp 
