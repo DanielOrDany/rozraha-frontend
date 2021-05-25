@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Book from "./Book";
-import { fetchBooks } from "../redux/actions";
+import { fetchBooks } from "../../redux/actions";
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default () => {
+const FetchedBooks = () => {
     const dispatch = useDispatch();
     const books = useSelector((state) => state.books.fetchedBooks);
     const loading = useSelector((state) => state.app.loading);
@@ -23,17 +22,21 @@ export default () => {
 
     return (
         <table>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Creator</th>
-                <th>Genre</th>
-                <th>Created At</th>
-                <th>Deleted At</th>
-                <th>createdAt</th>
-                <th>updatedAt</th>
-            </tr>
-            {bookTableData}
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Creator</th>
+                    <th>Genre</th>
+                    <th>Created At</th>
+                    <th>Deleted At</th>
+                    <th>createdAt</th>
+                    <th>updatedAt</th>
+                </tr>
+                {bookTableData}
+            </tbody>
         </table>
     );
 };
+
+export default FetchedBooks;

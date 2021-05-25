@@ -1,5 +1,5 @@
 import React from "react";
-import FetchedBooks from "./components/FetchedBooks";
+import FetchedBooks from "./components/Book/FetchedBooks";
 import PostForm from "./components/PostForm";
 import Posts from "./components/Posts";
 

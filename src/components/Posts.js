@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import Post from './Book';
+import Post from './Book/Book';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 const Posts = ({syncPosts}) => {
