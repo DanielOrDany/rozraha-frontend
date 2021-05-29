@@ -1,17 +1,16 @@
 import React from "react";
 import FetchedBooks from "./components/Book/FetchedBooks";
-import PostForm from "./components/PostForm";
-import Posts from "./components/Posts";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import HomePage from "./components/HomePage";
 
 function App() {
     return (
-        <div>
-            <PostForm />
-            <Posts posts={[1,2,3]}/>
-            <FetchedBooks />
-        </div>
+        <Router>
+            <Route path="/" component={FetchedBooks} exact/>
+            <Route  path="/home" component={HomePage} />
+        </Router>
     );
 }
 
 export default App;
-//datepicker timestamp 
+//datepicker timestamp
