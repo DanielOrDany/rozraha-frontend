@@ -2,8 +2,10 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+    list-style-type: none;
+    margin: 50px 0;
 }
 
-.table-links li {
+.table-link {
     text-decoration: none;
 }

@@ -3,17 +3,17 @@ import { Link,useRouteMatch } from "react-router-dom";
 import "./Tables.css"
 
 const Tables = () => {
-    const { path, url } = useRouteMatch();
+    const { url } = useRouteMatch();
     return (
         <>
             <ul className="table-links">
-                <Link to={`${url}/books`} exact >
+                <Link to={`${url}/books`} exact className="table-link" >
                     <li>Books</li>
                 </Link>
-                <Link to={`${url}/orders`} exact >
+                <Link to={`${url}/orders`} exact className="table-link">
                     <li>Orders</li>
                 </Link>
-                <Link to={`${url}/users`} exact >
+                <Link to={`${url}/users`} exact className="table-link">
                     <li>Users</li>
                 </Link>
             </ul>
