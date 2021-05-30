@@ -17,7 +17,7 @@ const Login = () => {
                     <span></span>
                     <label>Password</label>
                 </div>
-                <Link to="/books"><input type="submit"  value="Login" /></Link>
+                <Link to="/tables"><input type="submit"  value="Login" /></Link>
             </form>
         </div>
     );

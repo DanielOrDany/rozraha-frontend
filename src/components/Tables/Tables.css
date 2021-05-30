@@ -1,0 +1,9 @@
+.table-links {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.table-links li {
+    text-decoration: none;
+}
