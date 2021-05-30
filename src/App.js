@@ -2,7 +2,7 @@ import React from "react";
 import FetchedUsers from "./components/User/FetchedUsers";
 import FetchedBooks from "./components/Book/FetchedBooks";
 import FetchedOrders from "./components/Order/FetchedOrders";
-import { BrowserRouter as Router,Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import HomePage from "./components/HomePage/HomePage";
 import "./App.css"
 import Login from "./components/Login/Login";
