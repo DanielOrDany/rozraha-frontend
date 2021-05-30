@@ -1,4 +1,4 @@
-import { CREATE_POST, REQUEST_BOOKS, SHOW_LOADER, HIDE_LOADER,REQUEST_USERS } from "./types";
+import { CREATE_POST, REQUEST_BOOKS, SHOW_LOADER, HIDE_LOADER,REQUEST_USERS, REQUEST_ORDERS } from "./types";
 
 export function showLoader() {
     return {
@@ -20,6 +20,12 @@ export function fetchBooks() {
 export function fetchUsers() {
     return {
         type: REQUEST_USERS,
+    };
+}
+
+export function fetchOrders() {
+    return {
+        type: REQUEST_ORDERS,
     };
 }
 

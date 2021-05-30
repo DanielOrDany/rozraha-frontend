@@ -3,7 +3,7 @@ import './Book.module.css'
 
 const Book = ({book}) => {
     return (
-        <tr>
+        <tr id={book.id}>
             <td>{book.id}</td>
             <td>{book.name}</td>
             <td>{book.creator}</td>

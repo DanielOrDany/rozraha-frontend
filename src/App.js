@@ -1,5 +1,7 @@
 import React from "react";
+import FetchedUsers from "./components/User/FetchedUsers";
 import FetchedBooks from "./components/Book/FetchedBooks";
+import FetchedOrders from "./components/Order/FetchedOrders";
 import { BrowserRouter as Router,Switch, Route } from "react-router-dom";
 import HomePage from "./components/HomePage/HomePage";
 import "./App.css"
@@ -12,7 +14,8 @@ function App() {
             <Route  path="/" component={HomePage} exact/>
             <Route path="/tables" component={Tables} />
             <Route path="/tables/books" component={FetchedBooks} />
-            {/* add "/tables/orders" and "/tables/users" routes here*/}
+            <Route path="/tables/orders" component={FetchedOrders} />
+            <Route path="/tables/users" component={FetchedUsers}/>
             <Route path="/login" component={Login} exact/>
         </Router>
     );
