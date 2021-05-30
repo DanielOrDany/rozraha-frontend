@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Book from "../../assets/Book";
 import GraduationCap from "../../assets/GraduationCap";
+import Monitor from "../../assets/Monitor";
 import "./HomePage.css"
 
 const HomePage = () => {
@@ -13,8 +15,8 @@ const HomePage = () => {
                     </div>
                     <nav>
                         <ul >
-                            <Link to="/books" className="link">
-                                <li>Books</li>
+                            <Link to="/login" className="link">
+                                <li>Login</li>
                             </Link>
                         </ul>
                     </nav>
@@ -36,12 +38,12 @@ const HomePage = () => {
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit beatae culpa laboriosam. Obcaecati reiciendis assumenda, dolorum, culpa placeat numquam consectetur velit officiis quas voluptatem minus cum facere veniam alias nisi! </p>
                     </div>
                     <div className="box">
-                        <GraduationCap />
+                        <Monitor />
                         <h3>section 2</h3>
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit beatae culpa laboriosam. Obcaecati reiciendis assumenda, dolorum, culpa placeat numquam consectetur velit officiis quas voluptatem minus cum facere veniam alias nisi! </p>
                     </div>
                     <div className="box">
-                        <GraduationCap />
+                        <Book />
                         <h3>section 3</h3>
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit beatae culpa laboriosam. Obcaecati reiciendis assumenda, dolorum, culpa placeat numquam consectetur velit officiis quas voluptatem minus cum facere veniam alias nisi! </p>
                     </div>
