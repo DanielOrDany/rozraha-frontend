@@ -1,23 +1,49 @@
-import React from "react";
+import React,{useState} from "react";
 import "./Login.css"
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
+    const [name, setName] = useState('')
+    const [password, setPassword] = useState('')
+    const history = useHistory();
+
+    const validUser = {
+        name: 'testuser',
+        password: '1234'
+    }
+    
+
+    const handleNameChange = (event) => {
+        setName(event.target.value)
+    }
+    const handlePasswordChange = (event) => {
+        setPassword(event.target.value)
+    }
+
+    const handleLogin = () => {
+        const isValidUsername = name === validUser.name
+        const isValidPassword = password === validUser.password
+        if(!isValidPassword && !isValidUsername) {
+            return
+        }
+        history.push("/tables/books")
+    }
+
     return (
-        <div class="center">
+        <div className="center">
             <h1>Login</h1>
-            <form method="post">
-                <div class="txt_field">
-                    <input type="text" required />
+            <form>
+                <div className="txt_field">
+                    <input type="text" required value={name} onChange={handleNameChange}/>
                     <span></span>
                     <label>Username</label>
                 </div>
-                <div class="txt_field">
-                    <input type="password" required />
+                <div className="txt_field">
+                    <input type="password" required value={password} onChange={handlePasswordChange}/>
                     <span></span>
                     <label>Password</label>
                 </div>
-                <Link to="/tables"><input type="submit"  value="Login" /></Link>
+                <input type="submit"  value="Login" onClick={handleLogin}/>
             </form>
         </div>
     );
