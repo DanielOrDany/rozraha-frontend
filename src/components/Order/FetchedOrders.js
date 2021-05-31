@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { Modal, Button, Form } from 'react-bootstrap'
+import { Modal, Button, Form, Container, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from "react-redux";
 import Order from "./Order";
-import { fetchOrders } from "../../redux/actions";
-import add_icon from '../icons/add_black_48dp.svg';
+import { fetchOrders, fetchUsers, fetchBooks } from "../../redux/actions";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { postOrder } from "../../redux/saga"
+import { postOrder, getOrdersFinances } from "../../redux/saga"
 
 const FetchedOrders = () => {
     const dispatch = useDispatch();
     const orders = useSelector((state) => state.orders.fetchedOrders);
+    const users = useSelector((state) => state.users.fetchedUsers);
+    const books = useSelector((state) => state.books.fetchedBooks);
     const loading = useSelector((state) => state.app.loading);
 
     const [showAdd, setShowAdd] = useState(false);
@@ -19,13 +20,21 @@ const FetchedOrders = () => {
     const [bookId, setBookId] = useState("");
     const [expiredAt, setExpiredAt] = useState("");
     const [returnedAt, setReturnedAt] = useState("");
+    const [profit, setProfit] = useState("");
 
     const handleShowAdd = () => setShowAdd(true);
     const handleCloseAdd = () => setShowAdd(false);
     const handleSubmitAdd = () => {
         postOrder(preOrderValue, userId, orderValue, bookId, expiredAt, returnedAt).then(() => {
             setShowAdd(false);
+            getProfit();
             dispatch(fetchOrders())
+        })
+    }
+
+    const getProfit = () => {
+        getOrdersFinances().then((data) => {
+            setProfit(data)
         })
     }
 
@@ -46,15 +55,26 @@ const FetchedOrders = () => {
     }
 
     const expiredAtOnChange = (e) => {
-        setExpiredAt(e.target.value)
+        setExpiredAt(Date.parse(e.target.value) + 86400000)
     }
 
     const returnedAtOnChange = (e) => {
         setReturnedAt(e.target.value)
     }
 
+    const usersOptions = users.map((user) => (
+        <option value={user.id}>{user.full_name}</option>
+    ))
+
+    const bookOptions = books.map((book) => (
+        <option value={book.id}>{book.name}</option>
+    ))
+
     useEffect(() => {
+        getProfit();
         dispatch(fetchOrders());
+        dispatch(fetchBooks());
+        dispatch(fetchUsers());
     }, [dispatch]);
 
     if (loading) {
@@ -67,9 +87,16 @@ const FetchedOrders = () => {
 
     return (
         <>
-            <div onClick={handleShowAdd}>
-                <img src={add_icon} />
-            </div>
+            <Container style={{marginBottom: 15}}>
+                <Row>
+                    <Col md={{ span: 8, offset: 2 }}>
+                        <Button onClick={handleShowAdd} block>
+                            Add new order
+                        </Button>
+                    </Col>
+                    <Col><Button variant="light" disabled>Profit: {profit}</Button></Col>
+                </Row>
+            </Container>
             <table>
                 <tbody>
                     <tr>
@@ -83,6 +110,7 @@ const FetchedOrders = () => {
                         <th>Created At</th>
                         <th>createdAt</th>
                         <th>updatedAt</th>
+                        <th>Options</th>
                     </tr>
                     {orderTableData}
                 </tbody>
@@ -98,20 +126,24 @@ const FetchedOrders = () => {
                             <Form.Control onChange={preOrderValueOnChange}/>
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>User Id</Form.Label>
-                            <Form.Control onChange={userIdOnChange}/>
-                        </Form.Group>
-                        <Form.Group>
                             <Form.Label>Order Value</Form.Label>
                             <Form.Control onChange={orderValueOnChange}/>
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Book Id</Form.Label>
-                            <Form.Control onChange={bookIdOnChange}/>
+                            <Form.Label>User</Form.Label>
+                            <Form.Control as="select" onChange={userIdOnChange}>
+                                {usersOptions}
+                            </Form.Control>
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Book</Form.Label>
+                            <Form.Control as="select" onChange={bookIdOnChange}>
+                                {bookOptions}
+                            </Form.Control>
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Expired At</Form.Label>
-                            <Form.Control onChange={expiredAtOnChange}/>
+                            <Form.Control type="date" onChange={expiredAtOnChange} />
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Returned At</Form.Label>

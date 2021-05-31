@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Modal, Button, Form } from 'react-bootstrap'
+import { Modal, Button, Form, Container, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from "react-redux";
 import User from "./User";
 import { fetchUsers } from "../../redux/actions";
-import add_icon from '../icons/add_black_48dp.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { postUser } from "../../redux/saga"
 
@@ -57,9 +56,15 @@ const FetchedUsers = () => {
 
     return (
         <>
-            <div onClick={handleShowAdd}>
-                <img src={add_icon} />
-            </div>
+            <Container style={{marginBottom: 15}}>
+                <Row>
+                    <Col md={{ span: 8, offset: 2 }}>
+                        <Button onClick={handleShowAdd} block>
+                            Add new user
+                        </Button>
+                    </Col>
+                </Row>
+            </Container>
             <table>
                 <tbody>
                     <tr>
@@ -72,6 +77,7 @@ const FetchedUsers = () => {
                         <th>Deleted At</th>
                         <th>createdAt</th>
                         <th>updatedAt</th>
+                        <th>Options</th>
                     </tr>
                     {userTableData}
                 </tbody>

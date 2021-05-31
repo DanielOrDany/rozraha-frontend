@@ -1,9 +1,19 @@
 import React from 'react'
 import './Order.module.css'
-import delete_icon from '../icons/delete_black_36dp.svg';
-import edit_icon from "../icons/edit_black_36dp.svg"
+import return_icon from "../icons/keyboard_return_black_36dp.svg"
+import { useDispatch } from "react-redux";
+import { fetchOrders } from "../../redux/actions";
+import { passBook } from "../../redux/saga"
 
 const Order = ({order}) => {
+    const dispatch = useDispatch();
+
+    const returnBook = (bookId) => {
+        passBook(bookId).then(() => {
+            dispatch(fetchOrders());
+        })
+    }
+
     return (
         <tr id={order.id}>
             <td>{order.id}</td>
@@ -16,7 +26,7 @@ const Order = ({order}) => {
             <td>{order.created_at}</td>
             <td>{order.createdAt}</td>
             <td>{order.updatedAt}</td>
-            <td><img src={edit_icon}/><img src={delete_icon}/></td>
+            <td><img onClick={() => {returnBook(order.id)}} src={return_icon}/></td>
         </tr>
     );
 }
