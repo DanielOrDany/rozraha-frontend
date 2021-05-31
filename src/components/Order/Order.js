@@ -1,5 +1,7 @@
 import React from 'react'
 import './Order.module.css'
+import delete_icon from '../icons/delete_black_36dp.svg';
+import edit_icon from "../icons/edit_black_36dp.svg"
 
 const Order = ({order}) => {
     return (
@@ -14,6 +16,7 @@ const Order = ({order}) => {
             <td>{order.created_at}</td>
             <td>{order.createdAt}</td>
             <td>{order.updatedAt}</td>
+            <td><img src={edit_icon}/><img src={delete_icon}/></td>
         </tr>
     );
 }

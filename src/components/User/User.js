@@ -1,5 +1,7 @@
 import React from 'react'
 import './User.module.css'
+import delete_icon from '../icons/delete_black_36dp.svg';
+import edit_icon from "../icons/edit_black_36dp.svg"
 
 const User = ({user}) => {
     return (
@@ -13,6 +15,7 @@ const User = ({user}) => {
             <td>{user.deleted_at}</td>
             <td>{user.createdAt}</td>
             <td>{user.updatedAt}</td>
+            <td><img src={edit_icon}/><img src={delete_icon}/></td>
         </tr>
     );
 }
